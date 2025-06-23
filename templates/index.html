@@ -1,76 +1,139 @@
 <!DOCTYPE html>
 <html lang="de">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Phonix Kanban Board</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/static/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-</head>
-<body>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/static/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="navbar-brand">
+        <i class="fa-solid fa-fire" style="color: var(--accent)"></i>
+        <span>Phonix</span>
+      </div>
+      <div class="navbar-links">
+        <a
+          href="https://dc.phonixhost.de"
+          class="btn outline"
+          target="_blank"
+          rel="noopener"
+          ><i class="fa-brands fa-discord"></i> Discord</a
+        >
+        <a
+          href="https://panel.phonixhost.de"
+          class="btn outline"
+          target="_blank"
+          rel="noopener"
+          ><i class="fa-solid fa-server"></i> Panel</a
+        >
+      </div>
+    </nav>
     <header>
-        <h1>Phonix Kanban Board</h1>
-        <button id="darkmode-toggle" class="btn ghost" title="Dunkelmodus umschalten"><i class="fa-regular fa-moon"></i></button>
+      <h1>Phonix Kanban Board</h1>
+      <button
+        id="darkmode-toggle"
+        class="btn ghost"
+        title="Dunkelmodus umschalten"
+      >
+        <i class="fa-regular fa-moon"></i>
+      </button>
     </header>
     <main>
-        <section class="kanban-board">
-            <div class="kanban-column" data-status="To Do">
-                <div class="kanban-column-header">
-                    <span>To Do</span>
-                    <button class="add-task-btn" data-status="To Do" title="Neue Aufgabe"><i class="fa-solid fa-plus"></i></button>
-                </div>
-                <div class="kanban-tasks" id="todo-tasks"></div>
-            </div>
-            <div class="kanban-column" data-status="In Progress">
-                <div class="kanban-column-header">
-                    <span>In Progress</span>
-                    <button class="add-task-btn" data-status="In Progress" title="Neue Aufgabe"><i class="fa-solid fa-plus"></i></button>
-                </div>
-                <div class="kanban-tasks" id="progress-tasks"></div>
-            </div>
-            <div class="kanban-column" data-status="Done">
-                <div class="kanban-column-header">
-                    <span>Done</span>
-                    <button class="add-task-btn" data-status="Done" title="Neue Aufgabe"><i class="fa-solid fa-plus"></i></button>
-                </div>
-                <div class="kanban-tasks" id="done-tasks"></div>
-            </div>
-        </section>
-        <!-- Optional: Floating Action Button (FAB) für neue Aufgabe -->
-        <!-- <button class="fab" id="fab-add-task" title="Neue Aufgabe"><i class="fa-solid fa-plus"></i></button> -->
+      <section class="kanban-board">
+        <div class="kanban-column" data-status="To Do">
+          <div class="kanban-column-header">
+            <span>To Do</span>
+            <button
+              class="add-task-btn"
+              data-status="To Do"
+              title="Neue Aufgabe"
+            >
+              <i class="fa-solid fa-plus"></i>
+            </button>
+          </div>
+          <div class="kanban-tasks" id="todo-tasks"></div>
+        </div>
+        <div class="kanban-column" data-status="In Progress">
+          <div class="kanban-column-header">
+            <span>In Progress</span>
+            <button
+              class="add-task-btn"
+              data-status="In Progress"
+              title="Neue Aufgabe"
+            >
+              <i class="fa-solid fa-plus"></i>
+            </button>
+          </div>
+          <div class="kanban-tasks" id="progress-tasks"></div>
+        </div>
+        <div class="kanban-column" data-status="Done">
+          <div class="kanban-column-header">
+            <span>Done</span>
+            <button
+              class="add-task-btn"
+              data-status="Done"
+              title="Neue Aufgabe"
+            >
+              <i class="fa-solid fa-plus"></i>
+            </button>
+          </div>
+          <div class="kanban-tasks" id="done-tasks"></div>
+        </div>
+      </section>
+      <!-- Optional: Floating Action Button (FAB) für neue Aufgabe -->
+      <!-- <button class="fab" id="fab-add-task" title="Neue Aufgabe"><i class="fa-solid fa-plus"></i></button> -->
     </main>
     <!-- Task Modal -->
     <div id="task-modal" class="modal hidden">
-        <div class="modal-content">
-            <button type="button" class="close-btn" aria-label="Schließen"><i class="fa-solid fa-xmark"></i></button>
-            <form id="task-form">
-                <input type="hidden" id="task-id">
-                <label>Titel:<input type="text" id="task-title" required></label>
-                <label>Beschreibung:<textarea id="task-desc"></textarea></label>
-                <label>Status:
-                    <select id="task-status">
-                        <option value="To Do">To Do</option>
-                        <option value="In Progress">In Progress</option>
-                        <option value="Done">Done</option>
-                    </select>
-                </label>
-                <label>Priorität:
-                    <select id="task-priority">
-                        <option value="low">Niedrig</option>
-                        <option value="normal" selected>Mittel</option>
-                        <option value="high">Hoch</option>
-                    </select>
-                </label>
-                <label>Tags (Komma-getrennt):
-                    <input type="text" id="task-tags" placeholder="z.B. Bug, Feature, UI">
-                </label>
-                <button type="submit" class="btn primary"><i class="fa-solid fa-floppy-disk"></i> Speichern</button>
-            </form>
-        </div>
+      <div class="modal-content">
+        <button type="button" class="close-btn" aria-label="Schließen">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+        <form id="task-form">
+          <input type="hidden" id="task-id" />
+          <label>Titel:<input type="text" id="task-title" required /></label>
+          <label>Beschreibung:<textarea id="task-desc"></textarea></label>
+          <label
+            >Status:
+            <select id="task-status">
+              <option value="To Do">To Do</option>
+              <option value="In Progress">In Progress</option>
+              <option value="Done">Done</option>
+            </select>
+          </label>
+          <label
+            >Priorität:
+            <select id="task-priority">
+              <option value="low">Niedrig</option>
+              <option value="normal" selected>Mittel</option>
+              <option value="high">Hoch</option>
+            </select>
+          </label>
+          <label
+            >Tags (Komma-getrennt):
+            <input
+              type="text"
+              id="task-tags"
+              placeholder="z.B. Bug, Feature, UI"
+            />
+          </label>
+          <button type="submit" class="btn primary">
+            <i class="fa-solid fa-floppy-disk"></i> Speichern
+          </button>
+        </form>
+      </div>
     </div>
     <script src="/static/script.js"></script>
-</body>
+  </body>
 </html>

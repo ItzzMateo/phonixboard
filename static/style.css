@@ -9,11 +9,11 @@
   --card-dark: #23272a;
   --text: #222;
   --text-dark: #f6f7fb;
-  --shadow: 0 4px 24px rgba(0,0,0,0.07);
-  --shadow-dark: 0 4px 24px rgba(0,0,0,0.18);
+  --shadow: 0 4px 24px rgba(0, 0, 0, 0.07);
+  --shadow-dark: 0 4px 24px rgba(0, 0, 0, 0.18);
   --border-radius: 18px;
   --btn-radius: 0.5rem;
-  --transition: all 0.3s cubic-bezier(.4,0,.2,1);
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   --priority-high: #ef4444;
   --priority-normal: #22c55e;
   --priority-low: #3b82f6;
@@ -25,24 +25,25 @@
 }
 
 /* Font Awesome CDN */
-@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css');
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css");
 
 body {
   margin: 0;
   padding: 2rem;
   background: var(--bg);
   color: var(--text);
-  font-family: 'Inter', 'Roboto', Arial, sans-serif;
+  font-family: "Inter", "Roboto", Arial, sans-serif;
   text-align: center;
   min-height: 100vh;
   transition: background 0.3s, color 0.3s;
 }
 
-button, .btn {
+button,
+.btn {
   display: inline-flex;
   align-items: center;
   gap: var(--btn-gap);
-  font-family: 'Inter', 'Roboto', Arial, sans-serif;
+  font-family: "Inter", "Roboto", Arial, sans-serif;
   font-size: var(--btn-font);
   font-weight: 500;
   border: none;
@@ -51,7 +52,7 @@ button, .btn {
   background: var(--primary);
   color: #fff;
   cursor: pointer;
-  box-shadow: 0 2px 8px rgba(37,99,235,0.08);
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.08);
   transition: var(--transition);
   outline: none;
   position: relative;
@@ -59,25 +60,31 @@ button, .btn {
   min-height: 2.5rem;
 }
 
-button i, .btn i {
+button i,
+.btn i {
   font-size: 1.1em;
   display: inline-block;
 }
 
-button:hover, .btn:hover, button:focus, .btn:focus {
+button:hover,
+.btn:hover,
+button:focus,
+.btn:focus {
   background: var(--primary-dark);
   color: #fff;
   transform: scale(1.04);
-  box-shadow: 0 4px 16px rgba(37,99,235,0.13), 0 0 0 2px var(--primary-light);
+  box-shadow: 0 4px 16px rgba(37, 99, 235, 0.13), 0 0 0 2px var(--primary-light);
 }
 
-button:active, .btn:active {
+button:active,
+.btn:active {
   filter: brightness(1.1);
   box-shadow: 0 0 8px 2px var(--primary-light);
   transform: scale(0.98);
 }
 
-button:disabled, .btn:disabled {
+button:disabled,
+.btn:disabled {
   background: #bdbdbd;
   color: #fff;
   cursor: not-allowed;
@@ -86,13 +93,15 @@ button:disabled, .btn:disabled {
 }
 
 /* Spinner für Loading-Zustand */
-.btn.loading, button.loading {
+.btn.loading,
+button.loading {
   pointer-events: none;
   color: transparent !important;
 }
 
-.btn.loading:after, button.loading:after {
-  content: '';
+.btn.loading:after,
+button.loading:after {
+  content: "";
   border: 2.5px solid #fff;
   border-top: 2.5px solid var(--primary-light);
   border-radius: 50%;
@@ -101,37 +110,49 @@ button:disabled, .btn:disabled {
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
   animation: spin 0.8s linear infinite;
 }
 
 @keyframes spin {
-  0% { transform: translate(-50%,-50%) rotate(0deg); }
-  100% { transform: translate(-50%,-50%) rotate(360deg); }
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
 }
 
 /* Sekundär: Ghost & Outline */
-.btn.ghost, button.ghost {
+.btn.ghost,
+button.ghost {
   background: transparent;
   color: var(--primary);
   border: none;
   box-shadow: none;
 }
 
-.btn.ghost:hover, button.ghost:hover, .btn.ghost:focus, button.ghost:focus {
+.btn.ghost:hover,
+button.ghost:hover,
+.btn.ghost:focus,
+button.ghost:focus {
   background: #e0e7ff;
   color: var(--primary-dark);
   box-shadow: none;
 }
 
-.btn.outline, button.outline {
+.btn.outline,
+button.outline {
   background: transparent;
   color: var(--primary);
   border: 2px solid var(--primary);
   box-shadow: none;
 }
 
-.btn.outline:hover, button.outline:hover, .btn.outline:focus, button.outline:focus {
+.btn.outline:hover,
+button.outline:hover,
+.btn.outline:focus,
+button.outline:focus {
   background: var(--primary);
   color: #fff;
   border-color: var(--primary-dark);
@@ -155,7 +176,7 @@ button:disabled, .btn:disabled {
   width: 3.5rem;
   height: 3.5rem;
   font-size: 2rem;
-  box-shadow: 0 6px 24px rgba(245,158,66,0.18);
+  box-shadow: 0 6px 24px rgba(245, 158, 66, 0.18);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -164,11 +185,12 @@ button:disabled, .btn:disabled {
   outline: none;
 }
 
-.fab:hover, .fab:focus {
+.fab:hover,
+.fab:focus {
   background: #ffb84d;
   color: #fff;
   transform: scale(1.08);
-  box-shadow: 0 8px 32px rgba(245,158,66,0.28);
+  box-shadow: 0 8px 32px rgba(245, 158, 66, 0.28);
 }
 
 .fab:active {
@@ -195,7 +217,8 @@ button:disabled, .btn:disabled {
   justify-content: center;
 }
 
-.close-btn:hover, .close-btn:focus {
+.close-btn:hover,
+.close-btn:focus {
   color: var(--primary);
   background: #e0e7ff;
   transform: scale(1.1);
@@ -212,7 +235,7 @@ button:disabled, .btn:disabled {
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 8px rgba(37,99,235,0.08);
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.08);
   border: none;
   margin: 0.2rem 0.2rem 0.2rem 0.2rem;
   padding: 0;
@@ -224,11 +247,12 @@ button:disabled, .btn:disabled {
   font-size: 1.2em;
 }
 
-.add-task-btn:hover, .add-task-btn:focus {
+.add-task-btn:hover,
+.add-task-btn:focus {
   background: var(--primary-dark);
   color: #fff;
   transform: scale(1.08);
-  box-shadow: 0 4px 16px rgba(37,99,235,0.13);
+  box-shadow: 0 4px 16px rgba(37, 99, 235, 0.13);
 }
 
 .add-task-btn:active {
@@ -237,31 +261,39 @@ button:disabled, .btn:disabled {
 }
 
 /* Dark Mode für Buttons */
-body.darkmode button, body.darkmode .btn {
+body.darkmode button,
+body.darkmode .btn {
   background: var(--primary-light);
   color: #fff;
 }
 
-body.darkmode button:hover, body.darkmode .btn:hover, body.darkmode button:focus, body.darkmode .btn:focus {
+body.darkmode button:hover,
+body.darkmode .btn:hover,
+body.darkmode button:focus,
+body.darkmode .btn:focus {
   background: var(--primary-dark);
   color: #fff;
 }
 
-body.darkmode .btn.ghost, body.darkmode button.ghost {
+body.darkmode .btn.ghost,
+body.darkmode button.ghost {
   color: var(--primary-light);
 }
 
-body.darkmode .btn.ghost:hover, body.darkmode button.ghost:hover {
+body.darkmode .btn.ghost:hover,
+body.darkmode button.ghost:hover {
   background: #334155;
   color: #fff;
 }
 
-body.darkmode .btn.outline, body.darkmode button.outline {
+body.darkmode .btn.outline,
+body.darkmode button.outline {
   color: var(--primary-light);
   border-color: var(--primary-light);
 }
 
-body.darkmode .btn.outline:hover, body.darkmode button.outline:hover {
+body.darkmode .btn.outline:hover,
+body.darkmode button.outline:hover {
   background: var(--primary-dark);
   color: #fff;
   border-color: var(--primary-dark);
@@ -272,7 +304,8 @@ body.darkmode .fab {
   color: #fff;
 }
 
-body.darkmode .fab:hover, body.darkmode .fab:focus {
+body.darkmode .fab:hover,
+body.darkmode .fab:focus {
   background: #ffb84d;
   color: #fff;
 }
@@ -286,7 +319,8 @@ body.darkmode .fab:hover, body.darkmode .fab:focus {
     height: 2.7rem;
     font-size: 1.3rem;
   }
-  button, .btn {
+  button,
+  .btn {
     font-size: 0.97rem;
     padding: 0.45rem 0.8rem;
   }
@@ -310,7 +344,7 @@ header h1 {
   font-size: 2rem;
   font-weight: 700;
   letter-spacing: 1px;
-  font-family: 'Inter', 'Roboto', Arial, sans-serif;
+  font-family: "Inter", "Roboto", Arial, sans-serif;
 }
 
 #darkmode-toggle {
@@ -324,7 +358,8 @@ header h1 {
   color: var(--primary);
 }
 
-#darkmode-toggle:hover, #darkmode-toggle:focus {
+#darkmode-toggle:hover,
+#darkmode-toggle:focus {
   background: var(--primary-light);
   color: #fff;
   outline: none;
@@ -371,7 +406,7 @@ main {
   font-size: 1.15rem;
   font-weight: 600;
   letter-spacing: 0.5px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
 }
 
 .kanban-tasks {
@@ -388,10 +423,11 @@ main {
 .kanban-task {
   background: var(--bg);
   border-radius: 14px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
   padding: 1rem 1rem 0.8rem 0.8rem;
   cursor: grab;
-  transition: box-shadow var(--transition), background var(--transition), border-left var(--transition);
+  transition: box-shadow var(--transition), background var(--transition),
+    border-left var(--transition);
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -432,7 +468,7 @@ main {
   font-weight: 600;
   font-size: 1.05rem;
   margin-bottom: 0.2rem;
-  font-family: 'Inter', 'Roboto', Arial, sans-serif;
+  font-family: "Inter", "Roboto", Arial, sans-serif;
 }
 
 .kanban-task .task-desc {
@@ -478,7 +514,8 @@ main {
   transition: background var(--transition), color var(--transition);
 }
 
-.kanban-task button:hover, .kanban-task button:focus {
+.kanban-task button:hover,
+.kanban-task button:focus {
   background: var(--primary-light);
   color: #fff;
   outline: none;
@@ -580,83 +617,144 @@ body.darkmode .task-badge {
 }
 
 @keyframes skeleton {
-  0% { background-position: 200% 0; }
-  100% { background-position: -200% 0; }
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
 }
 
 /* Modal Styles (fixiert und zentriert) */
 .modal {
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0,0,0,0.18);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
-    transition: background var(--transition);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  transition: background var(--transition);
 }
 .modal.hidden {
-    display: none;
+  display: none;
 }
 .modal-content {
-    background: var(--card);
-    border-radius: 16px;
-    box-shadow: var(--shadow);
-    padding: 2rem 1.5rem;
-    min-width: 320px;
-    max-width: 95vw;
-    width: 100%;
-    max-width: 400px;
-    position: relative;
-    transition: background var(--transition), color var(--transition);
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
+  background: var(--card);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  padding: 2rem 1.5rem;
+  min-width: 320px;
+  max-width: 95vw;
+  width: 100%;
+  max-width: 400px;
+  position: relative;
+  transition: background var(--transition), color var(--transition);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
 }
 #task-form {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
 }
 #task-form label {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    font-size: 1rem;
-    width: 100%;
-    gap: 0.3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-size: 1rem;
+  width: 100%;
+  gap: 0.3rem;
 }
 #task-form input[type="text"],
 #task-form textarea,
 #task-form select {
-    width: 100%;
-    padding: 0.5rem;
-    border-radius: 6px;
-    border: 1px solid #ddd;
-    font-size: 1rem;
-    margin-top: 0.1rem;
-    box-sizing: border-box;
-    font-family: 'Inter', 'Roboto', Arial, sans-serif;
-    transition: border var(--transition), box-shadow var(--transition);
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  font-size: 1rem;
+  margin-top: 0.1rem;
+  box-sizing: border-box;
+  font-family: "Inter", "Roboto", Arial, sans-serif;
+  transition: border var(--transition), box-shadow var(--transition);
 }
 #task-form input[type="text"]:focus,
 #task-form textarea:focus,
 #task-form select:focus {
-    border: 1.5px solid var(--primary);
-    box-shadow: 0 0 0 2px #3b82f633;
-    outline: none;
+  border: 1.5px solid var(--primary);
+  box-shadow: 0 0 0 2px #3b82f633;
+  outline: none;
 }
 #task-form button[type="submit"] {
-    margin-top: 0.5rem;
-    align-self: flex-end;
+  margin-top: 0.5rem;
+  align-self: flex-end;
 }
 @media (max-width: 600px) {
-    .modal-content {
-        min-width: 0;
-        max-width: 98vw;
-        padding: 1rem 0.5rem;
-    }
+  .modal-content {
+    min-width: 0;
+    max-width: 98vw;
+    padding: 1rem 0.5rem;
+  }
+}
+
+.navbar {
+  width: 100%;
+  background: var(--card);
+  box-shadow: var(--shadow);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.7rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 1001;
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
+  margin-bottom: 1.2rem;
+}
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  font-family: "Inter", "Roboto", Arial, sans-serif;
+}
+.navbar-links {
+  display: flex;
+  gap: 0.7rem;
+}
+.navbar .btn {
+  font-size: 1rem;
+  padding: 0.45rem 1.1rem;
+  border-radius: var(--btn-radius);
+}
+@media (max-width: 700px) {
+  .navbar {
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.7rem 0.5rem;
+  }
+  .navbar-links {
+    gap: 0.4rem;
+  }
+}
+body.darkmode .navbar {
+  background: var(--card-dark);
+  color: var(--text-dark);
+  box-shadow: var(--shadow-dark);
+}
+
+.navbar a,
+.btn,
+.navbar .btn {
+  text-decoration: none;
 }
