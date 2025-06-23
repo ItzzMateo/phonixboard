@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kanban Board</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>📋 Mein Kanban Board</h1>
+    <div class="board">
+      <div class="column">
+        <h2>📝 To Do</h2>
+        <div class="list" id="todo"></div>
+        <button onclick="addTask('todo')">➕ Aufgabe</button>
+      </div>
+      <div class="column">
+        <h2>⚙️ In Progress</h2>
+        <div class="list" id="inprogress"></div>
+        <button onclick="addTask('inprogress')">➕ Aufgabe</button>
+      </div>
+      <div class="column">
+        <h2>✅ Done</h2>
+        <div class="list" id="done"></div>
+        <button onclick="addTask('done')">➕ Aufgabe</button>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
