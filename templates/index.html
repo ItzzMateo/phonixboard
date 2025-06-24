@@ -17,38 +17,40 @@
     />
   </head>
   <body>
-    <nav class="navbar">
-      <div class="navbar-brand">
-        <i class="fa-solid fa-fire" style="color: var(--accent)"></i>
-        <span>Phonix</span>
-      </div>
-      <div class="navbar-links">
-        <a
-          href="https://dc.phonixhost.de"
-          class="btn outline"
-          target="_blank"
-          rel="noopener"
-          ><i class="fa-brands fa-discord"></i> Discord</a
+    <div class="header-container">
+      <nav class="navbar">
+        <div class="navbar-brand">
+          <i class="fa-solid fa-fire" style="color: var(--accent)"></i>
+          <span>Phonix</span>
+        </div>
+        <div class="navbar-links">
+          <a
+            href="https://dc.phonixhost.de"
+            class="btn outline"
+            target="_blank"
+            rel="noopener"
+            ><i class="fa-brands fa-discord"></i> Discord</a
+          >
+          <a
+            href="https://panel.phonixhost.de"
+            class="btn outline"
+            target="_blank"
+            rel="noopener"
+            ><i class="fa-solid fa-server"></i> Panel</a
+          >
+        </div>
+      </nav>
+      <header>
+        <h1>Phonix Kanban Board</h1>
+        <button
+          id="darkmode-toggle"
+          class="btn ghost"
+          title="Dunkelmodus umschalten"
         >
-        <a
-          href="https://panel.phonixhost.de"
-          class="btn outline"
-          target="_blank"
-          rel="noopener"
-          ><i class="fa-solid fa-server"></i> Panel</a
-        >
-      </div>
-    </nav>
-    <header>
-      <h1>Phonix Kanban Board</h1>
-      <button
-        id="darkmode-toggle"
-        class="btn ghost"
-        title="Dunkelmodus umschalten"
-      >
-        <i class="fa-regular fa-moon"></i>
-      </button>
-    </header>
+          <i class="fa-regular fa-moon"></i>
+        </button>
+      </header>
+    </div>
     <main>
       <section class="kanban-board">
         <div class="kanban-column" data-status="To Do">
