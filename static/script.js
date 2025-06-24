@@ -222,10 +222,11 @@ document.addEventListener("DOMContentLoaded", () => {
         checkbox.addEventListener("change", async (e) => {
           const index = parseInt(e.target.dataset.index, 10);
           subtasks[index].completed = e.target.checked;
+
           await fetch(`/api/tasks/${task.id}`, {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ subtasks: JSON.stringify(subtasks) }),
+            body: JSON.stringify({ subtasks: subtasks }),
           });
         });
       });

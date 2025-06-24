@@ -118,9 +118,35 @@ def update_task(task_id):
         return jsonify({"error": "Invalid or missing JSON body"}), 400
 
     conn = sqlite3.connect(DB_PATH)
+    conn.row_factory = task_to_dict
     c = conn.cursor()
-    c.execute("UPDATE tasks SET title=?, description=?, status=?, priority=?, tags=?, due_date=?, subtasks=? WHERE id=?",
-              (data['title'], data.get('description', ''), data.get('status', 'To Do'), data.get('priority', 'normal'), data.get('tags', ''), data.get('due_date'), json.dumps(data.get('subtasks', [])), task_id))
+
+    # Zuerst den aktuellen Task abrufen, um ihn zu aktualisieren
+    c.execute("SELECT * FROM tasks WHERE id = ?", (task_id,))
+    task = c.fetchone()
+    if not task:
+        conn.close()
+        return jsonify({"error": "Task not found"}), 404
+
+    # Felder nur aktualisieren, wenn sie in der Anfrage vorhanden sind
+    task['title'] = data.get('title', task['title'])
+    task['description'] = data.get('description', task['description'])
+    task['status'] = data.get('status', task['status'])
+    task['priority'] = data.get('priority', task['priority'])
+    task['tags'] = data.get('tags', task['tags'])
+    task['due_date'] = data.get('due_date', task['due_date'])
+    
+    # Spezielle Behandlung für subtasks, die als Liste kommen
+    if 'subtasks' in data:
+        task['subtasks'] = json.dumps(data.get('subtasks', []))
+
+    c.execute("""UPDATE tasks SET 
+                 title=?, description=?, status=?, priority=?, 
+                 tags=?, due_date=?, subtasks=? 
+                 WHERE id=?""",
+              (task['title'], task['description'], task['status'], task['priority'], 
+               task['tags'], task['due_date'], task['subtasks'], task_id))
+    
     conn.commit()
     conn.close()
     return get_task(task_id)
