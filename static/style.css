@@ -1,47 +1,161 @@
 :root {
-  --primary: #2563eb;
-  --primary-light: #3b82f6;
-  --primary-dark: #1e40af;
+  /* ======================================== */
+  /*          COLOR & THEME SYSTEM            */
+  /* ======================================== */
+
+  /* 1. Primärfarben */
+  --primary: #4f46e5;
+  --primary-light: #6366f1;
+  --primary-dark: #3730a3;
   --accent: #f59e42;
-  --bg: #f4f7fc;
-  --bg-dark: #181a1b;
-  --card: #fff;
-  --card-dark: #23272a;
-  --text: #f6f7fb;
-  --text-dark: #222;
-  --text-muted: #4b5563;
-  --icon-color: #9ca3af;
-  --border-color: #e5e7eb;
-  --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.07), 0 1px 2px -1px rgba(0, 0, 0, 0.05);
-  --shadow-dark: 0 4px 24px rgba(0, 0, 0, 0.18);
-  --border-radius: 18px;
-  --btn-radius: 0.5rem;
-  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* 2. Light Mode (Standard-Theme) */
+  --bg-light: #f8fafc;
+  --card-light: #ffffff;
+  --text-light: #0f172a;
+  --text-muted-light: #64748b;
+  --border-light: #e2e8f0;
+  --icon-light: #888ea4;
+  --shadow-light: 0 2px 4px -1px rgba(0, 0, 0, 0.06),
+    0 4px 5px 0 rgba(0, 0, 0, 0.04);
+  --primary-hover-light: #e0e7ff;
+  --due-date-bg-light: #eef2ff;
+  --due-date-text-light: #4338ca;
+  --due-date-overdue-bg-light: #fee2e2;
+  --due-date-overdue-text-light: #b91c1c;
+  --badge-bg-light: #eef2ff;
+  --badge-text-light: #4338ca;
+  --column-header-bg-light: #ffffff;
+
+  /* 3. Dark Mode */
+  --bg-dark: #0d1117;
+  --card-dark: #161b22;
+  --text-dark: #e6edf3;
+  --text-muted-dark: #8b949e;
+  --border-dark: #30363d;
+  --icon-dark: #8b949e;
+  --shadow-dark: 0 0 transparent; /* Keine Schatten im Darkmode, Trennung durch Borders */
+  --primary-hover-dark: #312e81;
+  --due-date-bg-dark: #312e81;
+  --due-date-text-dark: #c7d2fe;
+  --due-date-overdue-bg-dark: #5f1a23;
+  --due-date-overdue-text-dark: #fca5a5;
+  --badge-bg-dark: #312e81;
+  --badge-text-dark: #c7d2fe;
+  --column-header-bg-dark: #161b22;
+  --error-bg-dark: #5f1a23;
+  --error-text-dark: #fca5a5;
+
+  /* 4. Spalten-spezifische Farben */
+  --todo-bg: #fffbe6;
+  --todo-text: #b45309;
+  --todo-bg-dark: #452c0d;
+  --todo-text-dark: #fde68a;
+
+  --progress-bg: #eef2ff;
+  --progress-text: #4338ca;
+  --progress-bg-dark: #312e81;
+  --progress-text-dark: #c7d2fe;
+
+  --done-bg: #f0fdf4;
+  --done-text: #166534;
+  --done-bg-dark: #14532d;
+  --done-text-dark: #bbf7d0;
+
+  /* 5. Generische Variablen (werden per body.darkmode umgeschaltet) */
+  --bg: var(--bg-light);
+  --card: var(--card-light);
+  --text: var(--text-light);
+  --text-muted: var(--text-muted-light);
+  --border-color: var(--border-light);
+  --icon-color: var(--icon-light);
+  --shadow: var(--shadow-light);
+  --primary-hover: var(--primary-hover-light);
+  --due-date-bg: var(--due-date-bg-light);
+  --due-date-text: var(--due-date-text-light);
+  --due-date-overdue-bg: var(--due-date-overdue-bg-light);
+  --due-date-overdue-text: var(--due-date-overdue-text-light);
+  --badge-bg: var(--badge-bg-light);
+  --badge-text: var(--badge-text-light);
+  --column-header-bg: var(--column-header-bg-light);
+  --error-bg: var(--error-bg-light);
+  --error-text: var(--error-text-light);
+
+  /* 6. Statische Variablen */
   --priority-high: #ef4444;
   --priority-normal: #22c55e;
   --priority-low: #3b82f6;
-  --badge-bg: #e0e7ff;
-  --badge-text: #3730a3;
+  --border-radius: 12px;
+  --btn-radius: 8px;
+  --transition: all 0.2s ease-in-out;
   --btn-padding: 0.5rem 1rem;
   --btn-font: 1rem;
   --btn-gap: 0.5rem;
 }
 
-/* Font Awesome CDN */
-@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css");
+/* ======================================== */
+/*              DARK MODE SWITCH              */
+/* ======================================== */
+body.darkmode {
+  --bg: var(--bg-dark);
+  --card: var(--card-dark);
+  --text: var(--text-dark);
+  --text-muted: var(--text-muted-dark);
+  --border-color: var(--border-dark);
+  --icon-color: var(--icon-dark);
+  --shadow: var(--shadow-dark);
+  --primary-hover: var(--primary-hover-dark);
+  --due-date-bg: var(--due-date-bg-dark);
+  --due-date-text: var(--due-date-text-dark);
+  --due-date-overdue-bg: var(--due-date-overdue-bg-dark);
+  --due-date-overdue-text: var(--due-date-overdue-text-dark);
+  --badge-bg: var(--badge-bg-dark);
+  --badge-text: var(--badge-text-dark);
+  --column-header-bg: var(--column-header-bg-dark);
+  --error-bg: var(--error-bg-dark);
+  --error-text: var(--error-text-dark);
+}
+
+/* ======================================== */
+/*              GLOBAL STYLES               */
+/* ======================================== */
+* {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none; /* Entfernt die Unterstreichung global */
+}
 
 body {
   margin: 0;
   padding: 2rem;
   background: var(--bg);
-  color: var(--text-dark);
+  color: var(--text);
   font-family: "Inter", "Roboto", Arial, sans-serif;
   text-align: center;
   min-height: 100vh;
-  transition: background 0.3s, color 0.3s;
-  padding-top: 8rem;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* ======================================== */
+/*                 BUTTONS                  */
+/* ======================================== */
 button,
 .btn {
   display: inline-flex;
@@ -134,14 +248,16 @@ button.ghost {
   color: var(--primary);
   border: none;
   box-shadow: none;
+  transition: var(--transition);
+  outline: none;
 }
 
 .btn.ghost:hover,
 button.ghost:hover,
 .btn.ghost:focus,
 button.ghost:focus {
-  background: #e0e7ff;
-  color: var(--primary-dark);
+  background: var(--primary-hover);
+  color: var(--primary);
   box-shadow: none;
 }
 
@@ -342,10 +458,12 @@ header {
   align-items: center;
   padding: 0.5rem 2rem;
   background: var(--card);
-  color: var(--text-dark);
+  color: var(--text);
   transition: var(--transition);
   border-radius: 0 0 var(--border-radius) var(--border-radius);
   box-shadow: var(--shadow);
+  border: 1px solid var(--border-color);
+  border-top: none;
 }
 
 header h1 {
@@ -364,26 +482,43 @@ header h1 {
   border-radius: 50%;
   padding: 0.5rem;
   transition: background var(--transition);
-  color: var(--primary);
+  color: var(--icon-color);
 }
 
 #darkmode-toggle:hover,
 #darkmode-toggle:focus {
-  background: var(--primary-light);
-  color: #fff;
+  color: var(--primary);
+  background: var(--primary-hover);
   outline: none;
+}
+
+body.darkmode #darkmode-toggle {
+  color: var(--text-muted);
+}
+
+body.darkmode #darkmode-toggle:hover,
+body.darkmode #darkmode-toggle:focus {
+  background: var(--bg);
+  color: var(--primary-light);
+}
+
+#darkmode-toggle i {
+  transition: transform 0.4s ease;
+}
+
+body.darkmode #darkmode-toggle i {
+  transform: rotate(180deg);
 }
 
 main {
   display: flex;
   justify-content: center;
-  padding: 2rem 0;
+  padding: 3rem 2rem;
 }
 
 .kanban-board {
   display: flex;
   gap: 2rem;
-  width: 100%;
   max-width: 1200px;
   align-items: flex-start;
 }
@@ -396,28 +531,79 @@ main {
   display: flex;
   flex-direction: column;
   padding: 0;
-  max-height: 80vh;
+  max-height: calc(100vh - 12rem);
   position: relative;
   transition: background var(--transition), box-shadow var(--transition);
+  background: var(--card);
+  box-shadow: var(--shadow);
 }
 
 .kanban-column-header {
   position: sticky;
   top: 0;
-  background: transparent;
-  z-index: 2;
-  border-radius: var(--border-radius) var(--border-radius) 0 0;
-  padding: 1rem 1rem 0.5rem 1rem;
+  background: var(--column-header-bg);
+  z-index: 10;
+  border-radius: var(--btn-radius);
+  padding: 0.75rem 1rem;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  font-size: 1.15rem;
+  justify-content: center;
+  font-size: 1rem;
   font-weight: 600;
   letter-spacing: 0.5px;
-  box-shadow: none;
+  box-shadow: var(--shadow);
   color: var(--text-muted);
-  border-bottom: 1px solid var(--border-color);
-  margin-bottom: 1rem;
+  margin: 0 0.5rem 1rem 0.5rem;
+  border: 1px solid var(--border-color);
+  transition: all 0.2s ease-in-out;
+}
+
+.kanban-column-header:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+body.darkmode .kanban-column-header:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.column-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.task-count {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: inherit; /* Erbt die Farbe von der Spaltenüberschrift */
+  opacity: 0.7; /* Macht die Zahl etwas dezenter */
+}
+
+/* Spaltenfarben */
+.kanban-column[data-status="To Do"] .kanban-column-header {
+  background-color: var(--todo-bg);
+  color: var(--todo-text);
+}
+.kanban-column[data-status="In Progress"] .kanban-column-header {
+  background-color: var(--progress-bg);
+  color: var(--progress-text);
+}
+.kanban-column[data-status="Done"] .kanban-column-header {
+  background-color: var(--done-bg);
+  color: var(--done-text);
+}
+body.darkmode .kanban-column[data-status="To Do"] .kanban-column-header {
+  background-color: var(--todo-bg-dark);
+  color: var(--todo-text-dark);
+}
+body.darkmode .kanban-column[data-status="In Progress"] .kanban-column-header {
+  background-color: var(--progress-bg-dark);
+  color: var(--progress-text-dark);
+}
+body.darkmode .kanban-column[data-status="Done"] .kanban-column-header {
+  background-color: var(--done-bg-dark);
+  color: var(--done-text-dark);
 }
 
 .kanban-tasks {
@@ -438,21 +624,37 @@ main {
   background: var(--card);
   border-radius: var(--btn-radius);
   box-shadow: var(--shadow);
-  padding: 1rem;
+  padding: 0.75rem 1rem;
   cursor: grab;
   transition: box-shadow 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 0.5rem;
   border: 1px solid var(--border-color);
   border-left-width: 4px;
   position: relative;
   outline: none;
 }
 
+.kanban-task:hover .drag-handle {
+  opacity: 1;
+}
+
+.drag-handle {
+  position: absolute;
+  left: -12px;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0;
+  cursor: grab;
+  color: var(--icon-color);
+  transition: opacity 0.2s ease;
+  padding: 5px;
+}
+
 .kanban-task.dragging {
-  opacity: 0.6;
-  transform: scale(1.03);
+  opacity: 0.8;
+  transform: scale(1.02);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
 }
 
@@ -471,7 +673,7 @@ main {
 .kanban-task .task-header {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
   gap: 0.5rem;
 }
 
@@ -484,13 +686,18 @@ main {
   font-size: 1.05rem;
   margin-bottom: 0rem;
   font-family: "Inter", "Roboto", Arial, sans-serif;
-  color: var(--text-dark);
+  color: var(--text);
+  padding-left: 0.5rem;
+}
+
+.kanban-task .task-body {
+  padding-left: 0.5rem;
 }
 
 .kanban-task .task-desc {
-  font-size: 0.97rem;
+  font-size: 0.95rem;
   color: var(--text-muted);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
   white-space: pre-wrap;
 }
 
@@ -498,7 +705,6 @@ main {
   display: flex;
   gap: 0.4rem;
   flex-wrap: wrap;
-  margin-bottom: 0.2rem;
 }
 
 .task-badge {
@@ -516,31 +722,191 @@ main {
 
 .kanban-task .task-footer {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
+  padding-left: 0.5rem;
 }
 
-.kanban-task .task-actions {
+.task-meta {
   display: flex;
-  gap: 0.25rem;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
 }
 
-.kanban-task button {
-  background: none;
-  border: none;
-  color: var(--icon-color);
-  cursor: pointer;
-  font-size: 1.1rem;
-  border-radius: 4px;
+.due-date {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background-color: var(--due-date-bg);
+  color: var(--due-date-text);
   padding: 0.2rem 0.5rem;
-  transition: background var(--transition), color var(--transition);
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
 }
 
-.kanban-task button:hover,
-.kanban-task button:focus {
-  background: var(--primary-light);
-  color: #fff;
+.due-date.overdue {
+  background-color: var(--due-date-overdue-bg);
+  color: var(--due-date-overdue-text);
+}
+
+.due-date i {
+  color: currentColor;
+  opacity: 0.7;
+}
+
+.priority-indicator {
+  font-size: 1rem;
+}
+
+/* ======================================== */
+/*          NEUES TASK-MENÜ STYLING         */
+/* ======================================== */
+.task-menu {
+  position: relative;
+  z-index: 11; /* Stellt sicher, dass der Button klickbar ist */
+}
+
+.menu-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.4rem;
+  border-radius: 50%;
+  color: var(--icon-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  transition: background-color 0.2s ease;
+}
+
+.menu-btn:hover,
+.menu-btn:focus-visible {
+  background: var(--primary-hover);
+  color: var(--primary);
   outline: none;
+}
+
+body.darkmode .menu-btn:hover,
+body.darkmode .menu-btn:focus-visible {
+  background: var(--bg); /* Etwas dunkler als die Karte */
+  color: var(--primary-light);
+}
+
+.menu-content {
+  /* Initialer Zustand (versteckt) für Animation */
+  opacity: 0;
+  transform: scale(0.95) translateY(-5px);
+  pointer-events: none; /* Nicht klickbar, wenn unsichtbar */
+
+  /* Positionierung */
+  position: absolute;
+  right: 0;
+  top: calc(100% + 5px); /* Kleiner Abstand zum Button */
+  z-index: 20;
+
+  /* Aussehen */
+  background: var(--card);
+  border-radius: var(--btn-radius);
+  box-shadow: 0 8px 16px -4px rgba(0, 0, 0, 0.1),
+    0 0 4px -1px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--border-color);
+  width: 170px; /* Etwas breiter für Icons */
+  padding: 0.4rem;
+
+  /* Animation */
+  transition: opacity 0.15s ease-out, transform 0.15s ease-out;
+  transform-origin: top right;
+}
+
+body.darkmode .menu-content {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+/* Sichtbarer Zustand */
+.menu-content.active {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  pointer-events: auto;
+}
+
+.menu-content a {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.6rem 0.75rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border-radius: 6px;
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.menu-content a:hover,
+.menu-content a:focus {
+  background: var(--primary-hover);
+  color: var(--primary);
+  outline: none;
+}
+
+.menu-content a i {
+  width: 16px; /* Icons ausrichten */
+  text-align: center;
+  opacity: 0.8;
+}
+
+/* Spezifische Farbe für Löschen-Aktion */
+.menu-content .delete-btn:hover,
+.menu-content .delete-btn:focus {
+  background-color: var(--due-date-overdue-bg-light);
+  color: var(--due-date-overdue-text-light);
+}
+
+body.darkmode .menu-content a:hover,
+body.darkmode .menu-content a:focus {
+  background: var(--primary-hover-dark);
+  color: var(--text-dark);
+}
+
+body.darkmode .menu-content .delete-btn:hover,
+body.darkmode .menu-content .delete-btn:focus {
+  background-color: var(--due-date-overdue-bg-dark);
+  color: var(--due-date-overdue-text-dark);
+}
+
+.checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.subtask {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.subtask input {
+  margin: 0;
+  width: 14px;
+  height: 14px;
+}
+
+.subtask label {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.subtask input:checked + label {
+  text-decoration: line-through;
+  opacity: 0.7;
 }
 
 /* Drag & Drop Hover Effekt */
@@ -554,10 +920,13 @@ main {
   .kanban-board {
     flex-direction: column;
     gap: 1.5rem;
-    max-width: 98vw;
+    align-items: stretch;
+    max-width: 100%;
+    padding: 0 1rem;
   }
   .kanban-column {
     max-height: none;
+    min-width: 0;
   }
 }
 
@@ -581,11 +950,6 @@ main {
 }
 
 /* Dunkelmodus */
-body.darkmode {
-  background: var(--bg-dark);
-  color: var(--text);
-}
-
 body.darkmode header {
   background: var(--card-dark);
   color: var(--text);
@@ -603,10 +967,10 @@ body.darkmode .kanban-tasks.drag-over {
 }
 
 body.darkmode .kanban-task {
-  background: #23272a;
+  background: var(--card);
   color: var(--text);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
-  border-color: #374151;
+  box-shadow: var(--shadow);
+  border-color: var(--border-color);
 }
 
 body.darkmode .kanban-task .task-title {
@@ -614,9 +978,9 @@ body.darkmode .kanban-task .task-title {
 }
 
 body.darkmode .modal-content {
-  background: var(--card-dark);
+  background: var(--card);
   color: var(--text);
-  box-shadow: var(--shadow-dark);
+  box-shadow: var(--shadow);
 }
 
 body.darkmode .add-task-btn,
@@ -748,6 +1112,7 @@ body.darkmode select:focus {
   display: flex;
   flex-direction: column;
   align-items: stretch;
+  border: 1px solid var(--border-color);
 }
 #task-form {
   display: flex;
@@ -769,7 +1134,9 @@ body.darkmode select:focus {
   width: 100%;
   padding: 0.5rem;
   border-radius: 6px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--border-color);
+  background: var(--bg);
+  color: var(--text);
   font-size: 1rem;
   margin-top: 0.1rem;
   box-sizing: border-box;
@@ -779,9 +1146,14 @@ body.darkmode select:focus {
 #task-form input[type="text"]:focus,
 #task-form textarea:focus,
 #task-form select:focus {
-  border: 1.5px solid var(--primary);
-  box-shadow: 0 0 0 2px #3b82f633;
+  border: 1px solid var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-hover);
   outline: none;
+}
+#task-form input::placeholder,
+#task-form textarea::placeholder {
+  color: var(--text-muted);
+  opacity: 0.7;
 }
 #task-form button[type="submit"] {
   margin-top: 0.5rem;
@@ -804,6 +1176,8 @@ body.darkmode select:focus {
   color: var(--text);
   transition: var(--transition);
   border-radius: var(--border-radius) var(--border-radius) 0 0;
+  border: 1px solid var(--border-color);
+  border-bottom: none;
 }
 
 .navbar-brand {
@@ -848,13 +1222,13 @@ body.darkmode .navbar {
 }
 
 body.darkmode .kanban-column-header {
-  background: #23272a;
-  color: var(--text);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
-  border-bottom: 1px solid #374151;
+  background: transparent;
+  color: var(--text-muted);
+  box-shadow: none;
+  border-bottom-color: var(--border-color);
 }
 body.darkmode .kanban-column-header span {
-  color: var(--text);
+  color: var(--text-muted);
   opacity: 1;
 }
 body.darkmode .kanban-column-header .add-task-btn {
@@ -871,4 +1245,210 @@ body.darkmode .kanban-column-header .add-task-btn:focus {
   display: flex;
   align-items: center;
   gap: 1rem;
+}
+
+body.darkmode .menu-btn:hover,
+body.darkmode .menu-content a:hover {
+  background: var(--bg);
+}
+
+body.darkmode .menu-content {
+  background: var(--card);
+  box-shadow: var(--shadow);
+}
+
+body.darkmode .menu-content a {
+  color: var(--text);
+}
+
+body.darkmode .subtask label {
+  color: var(--text-muted);
+}
+
+body.darkmode .due-date {
+  background-color: var(--due-date-bg-dark);
+  color: var(--due-date-text-dark);
+}
+
+body.darkmode .due-date i {
+  color: var(--due-date-text-dark);
+}
+
+body.darkmode .due-date.overdue {
+  background-color: var(--due-date-overdue-bg-dark);
+  color: var(--due-date-overdue-text-dark);
+}
+
+body.darkmode .due-date.overdue i {
+  color: var(--due-date-overdue-text-dark);
+}
+
+body.darkmode .modal-content {
+  background: var(--card);
+  color: var(--text);
+  box-shadow: var(--shadow);
+}
+
+.form-row {
+  display: flex;
+  gap: 1rem;
+}
+
+.form-row > label {
+  flex: 1;
+}
+
+.kanban-column-header .add-task-btn {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: 0;
+  background: rgba(0, 0, 0, 0.05); /* Dezenter, halbtransparenter Hintergrund */
+  color: inherit; /* Erbt Farbe von der Überschrift */
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  font-size: 1rem;
+  box-shadow: none;
+  border: none;
+}
+
+.kanban-column-header .add-task-btn:hover {
+  background: rgba(0, 0, 0, 0.1);
+  transform: translateY(-50%) scale(1.05);
+}
+
+body.darkmode .kanban-column-header .add-task-btn {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+body.darkmode .kanban-column-header .add-task-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Custom Date Input */
+.date-input-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.date-input-wrapper input[type="date"] {
+  width: 100%;
+  padding: 0.5rem 0.5rem 0.5rem 2.5rem; /* Platz für Icon */
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+  background: var(--bg);
+  color: var(--text);
+  font-size: 1rem;
+  font-family: "Inter", "Roboto", Arial, sans-serif;
+  transition: border var(--transition), box-shadow var(--transition);
+  position: relative;
+  z-index: 1;
+}
+
+.date-input-wrapper i {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--icon-color);
+  z-index: 2;
+  pointer-events: none; /* Klicks gehen durch zum Input */
+}
+
+/* Kalender-Picker Indikator anpassen */
+.date-input-wrapper input[type="date"]::-webkit-calendar-picker-indicator {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  color: transparent;
+  cursor: pointer;
+  z-index: 3;
+}
+
+.date-input-wrapper input[type="date"]:focus,
+.date-input-wrapper input[type="date"]:hover {
+  border: 1px solid var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-hover);
+  outline: none;
+}
+
+#task-form button[type="submit"] {
+  margin-top: 0.5rem;
+  align-self: flex-end;
+}
+
+.form-control {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.error-badge {
+  background-color: var(--error-bg);
+  color: var(--error-text);
+  padding: 0.25rem 0.6rem;
+  border-radius: 99px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  position: absolute;
+  top: 0;
+  right: 0;
+  opacity: 0;
+  transform: translateY(-5px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  pointer-events: none;
+}
+
+.error-badge.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.markdown-preview {
+  background-color: var(--bg);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  margin-top: 0.5rem;
+  text-align: left;
+  min-height: 50px;
+}
+.markdown-preview h1,
+.markdown-preview h2,
+.markdown-preview h3 {
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.25rem;
+}
+.markdown-preview p {
+  margin: 0.5rem 0;
+}
+.markdown-preview ul,
+.markdown-preview ol {
+  padding-left: 1.5rem;
+}
+.markdown-preview code {
+  background: var(--primary-hover);
+  padding: 0.1rem 0.3rem;
+  border-radius: 4px;
+  font-family: "Courier New", Courier, monospace;
+}
+.markdown-preview pre {
+  background: var(--bg-dark);
+  color: var(--text-dark);
+  padding: 1rem;
+  border-radius: var(--btn-radius);
+  overflow-x: auto;
+}
+body.darkmode .markdown-preview pre {
+  background: var(--bg);
 }

@@ -15,6 +15,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
     />
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   </head>
   <body>
     <div class="header-container">
@@ -55,7 +56,10 @@
       <section class="kanban-board">
         <div class="kanban-column" data-status="To Do">
           <div class="kanban-column-header">
-            <span>To Do</span>
+            <span class="column-title">
+              <i class="fa-regular fa-clock"></i> To Do
+              <span class="task-count"></span>
+            </span>
             <button
               class="add-task-btn"
               data-status="To Do"
@@ -68,7 +72,10 @@
         </div>
         <div class="kanban-column" data-status="In Progress">
           <div class="kanban-column-header">
-            <span>In Progress</span>
+            <span class="column-title">
+              <i class="fa-solid fa-person-running"></i> In Progress
+              <span class="task-count"></span>
+            </span>
             <button
               class="add-task-btn"
               data-status="In Progress"
@@ -81,7 +88,10 @@
         </div>
         <div class="kanban-column" data-status="Done">
           <div class="kanban-column-header">
-            <span>Done</span>
+            <span class="column-title">
+              <i class="fa-solid fa-circle-check"></i> Done
+              <span class="task-count"></span>
+            </span>
             <button
               class="add-task-btn"
               data-status="Done"
@@ -104,24 +114,43 @@
         </button>
         <form id="task-form">
           <input type="hidden" id="task-id" />
-          <label>Titel:<input type="text" id="task-title" required /></label>
-          <label>Beschreibung:<textarea id="task-desc"></textarea></label>
-          <label
-            >Status:
-            <select id="task-status">
-              <option value="To Do">To Do</option>
-              <option value="In Progress">In Progress</option>
-              <option value="Done">Done</option>
-            </select>
-          </label>
-          <label
-            >Priorität:
-            <select id="task-priority">
-              <option value="low">Niedrig</option>
-              <option value="normal" selected>Mittel</option>
-              <option value="high">Hoch</option>
-            </select>
-          </label>
+          <div class="form-control">
+            <label for="task-title">Titel:</label>
+            <input type="text" id="task-title" />
+            <div class="error-badge" id="title-error">
+              Fülle dieses Feld aus
+            </div>
+          </div>
+          <div class="form-control">
+            <label for="task-desc"
+              >Beschreibung (Markdown wird unterstützt):</label
+            >
+            <textarea id="task-desc"></textarea>
+            <div class="markdown-preview" id="desc-preview"></div>
+          </div>
+          <div class="form-row">
+            <label
+              >Status:
+              <select id="task-status">
+                <option value="To Do">To Do</option>
+                <option value="In Progress">In Progress</option>
+                <option value="Done">Done</option>
+              </select>
+            </label>
+            <label
+              >Priorität:
+              <select id="task-priority">
+                <option value="high">Hoch</option>
+                <option value="normal" selected>Mittel</option>
+                <option value="low">Niedrig</option>
+              </select>
+            </label>
+          </div>
+          <label for="task-due-date">Fälligkeitsdatum:</label>
+          <div class="date-input-wrapper">
+            <input type="date" id="task-due-date" />
+            <i class="fa-regular fa-calendar"></i>
+          </div>
           <label
             >Tags (Komma-getrennt):
             <input
@@ -129,6 +158,14 @@
               id="task-tags"
               placeholder="z.B. Bug, Feature, UI"
             />
+          </label>
+          <label
+            >Subtasks (eine pro Zeile):
+            <textarea
+              id="task-subtasks"
+              rows="3"
+              placeholder="- Ersten Entwurf erstellen&#10;- Feedback einholen"
+            ></textarea>
           </label>
           <button type="submit" class="btn primary">
             <i class="fa-solid fa-floppy-disk"></i> Speichern
